@@ -1,0 +1,164 @@
+/*** Units ***/
+$body_width: 500px;
+$space_l: 40px;
+$space_m: 25px;
+$space_s: 10px;
+$link_width: 112px;
+$link_height: 40px;
+$number_of_searches: 4;
+$number_of_bookmarks: 3;
+
+$sf_font_size: 24px;
+$sf_border_width: 1px;
+$sf_padding_v: 2px;
+$sf_padding_h: 4px;
+
+/*** Colors ***/
+$dark_gray: hsl(0, 0%, 40%);
+$light_gray: hsl(0, 0%, 60%);
+$almost_white: hsl(0, 0%, 95%);
+$white: hsl(0, 0%, 100%);
+
+
+/*** Mixins ***/
+@mixin text-shadow($color) {
+	-webkit-text-shadow: 0 1px 0 $color;
+	-moz-text-shadow: 0 1px 0 $color;
+	text-shadow: 0 1px 0 $color;
+}
+
+@mixin background-size($width, $height) {
+	-webkit-background-size: $width $height;
+	-moz-background-size: $width $height;
+	background-size: $width $height;
+}
+
+@mixin transition($values) {
+	-webkit-transition: $values;
+	-webkit-transition: $values;
+}
+
+@mixin box-shadow($values) {
+	-webkit-box-shadow: $values;
+	-moz-box-shadow: $values;
+	box-shadow: $values;
+}
+
+@mixin border-radius($value) {
+	-webkit-border-radius: $value;
+	-moz-border-radius: $value;
+	border-radius: $value;
+}
+
+@import "compass/utilities/general/clearfix";
+
+/*** Styles ***/
+html {
+    background: hsl(0, 0%, 93%);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsl(0, 0%, 98%)	), to(hsl(0, 0%, 80%)));
+    background-image: -moz-linear-gradient(center top, hsl(0, 0%, 98%), hsl(0, 0%, 80%));
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+body {
+	background: transparent;
+	width: $body_width;
+	margin: 3*$space_m auto 0;
+	padding: $space_m;
+	text-align: left;
+	-webkit-text-size-adjust: none;
+	-webkit-user-select: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1 {
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-size: 34px;
+	text-align: center;
+	margin: 0 0 $space_l;
+	color: $dark_gray;
+	@include text-shadow($white);
+}
+
+#search-pages,
+#bookmarks {
+	width: $body_width;
+	height: $link_height;
+	@include clearfix;
+}
+
+#search-pages {
+	margin: 0 0 $space_s;
+	padding: 0 ($body_width - $link_width * $number_of_searches) / 2;
+	
+}
+
+#bookmarks {
+	margin: $space_l 0 0;
+	padding: 0 ($body_width - $link_width * $number_of_bookmarks) / 2;
+}
+
+.search-page,
+.bookmark {
+	display: block;
+	float: left;
+	width: 112px;
+	height: 40px;
+	@include background-size($link_width, $link_height);
+	text-indent: -999em;
+	overflow: hidden;
+	opacity: 0.3;
+	@include transition(opacity 0.2s linear);
+}
+
+#search-pages .newline,
+#bookmarks .newline {
+	clear: left;
+}
+
+.search-page:hover,
+.search-page:active,
+.search-page:target,
+.bookmark:hover {
+	opacity: 1.0;
+}
+
+#search-google { background-image: url(../images/google.png); }
+#search-wikipedia { background-image: url(../images/wikipedia.png); }
+#search-youtube { background-image: url(../images/youtube.png); }
+#search-twitter { background-image: url(../images/twitter.png); }
+
+#bookmark-facebook { background-image: url(../images/facebook.png); }
+#bookmark-github { background-image: url(../images/github.png); }
+#bookmark-instapaper { background-image: url(../images/instapaper.png); }
+
+#search-box {
+	height: $sf_font_size + 2 * $sf_padding_v + 2 * $sf_border_width;
+}
+
+#search-box.google #search-google {
+	opacity: 1.0;
+}
+
+#search-field {
+	-webkit-appearance: none;
+	float: left;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	font-size: $sf_font_size;
+	color: $dark_gray;
+	width: $body_width - 2*$sf_border_width - 2*$sf_padding_h;
+	padding: $sf_padding_v $sf_padding_h;
+	border: 1px solid $light_gray;
+	
+	background: $white;
+	-webkit-background-clip: padding-box;
+	@include border-radius(3px);
+	@include box-shadow((0 1px 0 $almost_white, inset 0 1px 2px $light_gray));
+}
+
+#search-field:focus {
+	outline: none;
+}
