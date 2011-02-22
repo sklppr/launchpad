@@ -1,0 +1,21 @@
+@media only screen and (max-device-width: 480px) {
+	
+	html {
+		min-height: 290px;
+	}
+	
+	body {
+		margin-top: 0;
+		padding: 40px 50px;
+	}
+	
+	h1 {
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+	
+	#bookmarks {
+		margin-top: 20px;
+	}
+	
+}
