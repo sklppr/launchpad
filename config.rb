@@ -1,9 +1,7 @@
-# Require any additional compass plugins here.
-# Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "stylesheets"
+http_path = "/launchpad/"
 sass_dir = "src"
+css_dir = "stylesheets"
 images_dir = "images"
-javascripts_dir = "javascripts"
-# To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+javascripts_dir = "scripts"
+relative_assets = false
+output_style = :compact
