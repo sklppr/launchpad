@@ -1,5 +1,4 @@
-/*** Launchpad by @sklppr Ñ https://github.com/sklppr/launchpad ***/
-
+/*** Launchpad by @sklppr - https://github.com/sklppr/launchpad ***/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
 
 body { line-height: 1; color: black; background: white; }
@@ -21,35 +20,31 @@ body { background: transparent; width: 650px; margin: 75px auto 0; padding: 25px
 
 h1 { font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; font-size: 34px; text-align: center; margin: 0 0 40px; color: #666666; -webkit-text-shadow: 0 1px 0 white; -moz-text-shadow: 0 1px 0 white; text-shadow: 0 1px 0 white; }
 
-#search-pages, #bookmarks { height: 40px; overflow: hidden; *zoom: 1; }
+#search-pages { margin: 0 0 10px 53px; height: 40px; overflow: hidden; *zoom: 1; }
 
-#search-pages { width: 600px; margin: 0 0 10px 15px; padding: 0 25px; }
+#bookmarks { margin: 40px 0 0 155px; height: 40px; overflow: hidden; *zoom: 1; }
 
-#bookmarks { width: 356px; margin: 40px 0 0; padding: 0 147px; }
-
-.search-page, .bookmark { display: block; float: left; width: 112px; height: 40px; margin-left: 10px; -webkit-background-size: 112px 40px; -moz-background-size: 112px 40px; background-size: 112px 40px; text-indent: -999em; overflow: hidden; opacity: 0.3; -webkit-transition: opacity 0.2s linear; -webkit-transition: opacity 0.2s linear; }
+.search-page, .bookmark { display: block; float: left; height: 40px; margin-left: 20px; text-indent: -999em; overflow: hidden; opacity: 0.3; -webkit-transition: opacity 0.2s linear; -webkit-transition: opacity 0.2s linear; }
 
 .search-pages-item:first-child .search-page, .bookmarks-item:first-child .bookmark { margin-left: 0; }
 
-#search-pages .newline, #bookmarks .newline { clear: left; }
-
 .search-page:hover, .search-page:active, .search-page:target, .bookmark:hover { opacity: 1.0; }
 
-#search-google { background: url(../images/google.png) 0 0 no-repeat; }
+#search-google { background: url('../images/../images.png?1298496476'); width: 90px; }
 
-#search-wikipedia { background: url(../images/wikipedia.png) 0 0 no-repeat; }
+#search-wikipedia { background: url('../images/../images.png?1298496476') 0 -40px; width: 98px; }
 
-#search-wolfram { background: url(../images/wolfram.png) 0 0 no-repeat; }
+#search-wolfram { background: url('../images/../images.png?1298496476') 0 -80px; width: 112px; }
 
-#search-twitter { background: url(../images/twitter.png) 0 0 no-repeat; }
+#search-twitter { background: url('../images/../images.png?1298496476') 0 -120px; width: 92px; }
 
-#search-youtube { background: url(../images/youtube.png) 0 0 no-repeat; background-position: -20px 0; }
+#search-youtube { background: url('../images/../images.png?1298496476') 0 -160px; width: 72px; }
 
-#bookmark-facebook { background: url(../images/facebook.png) 0 0 no-repeat; }
+#bookmark-facebook { background: url('../images/../images.png?1298496476') 0 -200px; width: 104px; }
 
-#bookmark-github { background: url(../images/github.png) 0 0 no-repeat; }
+#bookmark-github { background: url('../images/../images.png?1298496476') 0 -240px; width: 67px; }
 
-#bookmark-instapaper { background: url(../images/instapaper.png) 0 0 no-repeat; }
+#bookmark-instapaper { background: url('../images/../images.png?1298496476') 0 -280px; width: 109px; }
 
 #search-box { height: 30px; }
 

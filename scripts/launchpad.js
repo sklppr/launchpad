@@ -1,4 +1,4 @@
-/*** Launchpad by @sklppr Ñ https://github.com/sklppr/launchpad ***/
+/*** Launchpad by @sklppr - https://github.com/sklppr/launchpad ***/
 
 // Encapsulating all functionality.
 var launchpad = {
