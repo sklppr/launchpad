@@ -1,12 +1,8 @@
-/*** Units ***/
 $body_width: 650px;
 $space_l: 40px;
 $space_m: 25px;
 $space_s: 10px;
-$link_width: 112px;
 $link_height: 40px;
-$number_of_searches: 5;
-$number_of_bookmarks: 3;
 
 $sf_width: 450px;
 $sf_font_size: 24px;
@@ -14,24 +10,17 @@ $sf_border_width: 1px;
 $sf_padding_v: 2px;
 $sf_padding_h: 4px;
 
-/*** Colors ***/
 $dark_gray: hsl(0, 0%, 40%);
 $light_gray: hsl(0, 0%, 60%);
 $almost_white: hsl(0, 0%, 95%);
 $white: hsl(0, 0%, 100%);
 
 
-/*** Mixins ***/
+
 @mixin text-shadow($color) {
 	-webkit-text-shadow: 0 1px 0 $color;
 	-moz-text-shadow: 0 1px 0 $color;
 	text-shadow: 0 1px 0 $color;
-}
-
-@mixin background-size($width, $height) {
-	-webkit-background-size: $width $height;
-	-moz-background-size: $width $height;
-	background-size: $width $height;
 }
 
 @mixin transition($values) {
@@ -51,13 +40,15 @@ $white: hsl(0, 0%, 100%);
 	border-radius: $value;
 }
 
-@mixin imglink($filename) {
-	background: url(../images/#{$filename}.png) 0 0 no-repeat;
+@mixin imglink($filename, $width) {
+	background: sprite-image('../images/#{$filename}.png');
+	width: #{$width}px;
 }
 
 @import "compass/utilities/general/clearfix";
 
-/*** Styles ***/
+
+
 html {
     background: hsl(0, 0%, 93%);
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(hsl(0, 0%, 98%)	), to(hsl(0, 0%, 80%)));
@@ -88,32 +79,24 @@ h1 {
 	@include text-shadow($white);
 }
 
-#search-pages,
-#bookmarks {
+#search-pages {
+	margin: 0 0 $space_s ($body_width - 90px - 98px - 112px - 92px - 72px - 4*2*$space_s)/2;
 	height: $link_height;
 	@include clearfix;
 }
 
-#search-pages {
-	width: $link_width * $number_of_searches + $space_s * ($number_of_searches - 1);
-	margin: 0 0 $space_s 15px; /* left margin to account for YouTube link being shifted to the left */
-	padding: 0 ($body_width - $link_width * $number_of_searches - $space_s * ($number_of_searches - 1)) / 2;
-}
-
 #bookmarks {
-	width: $link_width * $number_of_bookmarks + $space_s * ($number_of_bookmarks - 1);
-	margin: $space_l 0 0;
-	padding: 0 ($body_width - $link_width * $number_of_bookmarks - $space_s * ($number_of_bookmarks - 1)) / 2;
+	margin: $space_l 0 0 ($body_width - 104px - 67px - 109px - 3*2*$space_s)/2;
+	height: $link_height;
+	@include clearfix;
 }
 
 .search-page,
 .bookmark {
 	display: block;
 	float: left;
-	width: 112px;
 	height: 40px;
-	margin-left: $space_s;
-	@include background-size($link_width, $link_height);
+	margin-left: 2*$space_s;
 	text-indent: -999em;
 	overflow: hidden;
 	opacity: 0.3;
@@ -125,11 +108,6 @@ h1 {
 	margin-left: 0;
 }
 
-#search-pages .newline,
-#bookmarks .newline {
-	clear: left;
-}
-
 .search-page:hover,
 .search-page:active,
 .search-page:target,
@@ -137,15 +115,15 @@ h1 {
 	opacity: 1.0;
 }
 
-#search-google { @include imglink(google); }
-#search-wikipedia { @include imglink(wikipedia); }
-#search-wolfram { @include imglink(wolfram); }
-#search-twitter { @include imglink(twitter); }
-#search-youtube { @include imglink(youtube); background-position: -20px 0; }
+#search-google { @include imglink(google, 90); }
+#search-wikipedia { @include imglink(wikipedia, 98); }
+#search-wolfram { @include imglink(wolfram, 112); }
+#search-twitter { @include imglink(twitter, 92); }
+#search-youtube { @include imglink(youtube, 72); }
 
-#bookmark-facebook { @include imglink(facebook); }
-#bookmark-github { @include imglink(github); }
-#bookmark-instapaper { @include imglink(instapaper); }
+#bookmark-facebook { @include imglink(facebook, 104);}
+#bookmark-github { @include imglink(github, 67); }
+#bookmark-instapaper { @include imglink(instapaper, 109); }
 
 #search-box {
 	height: $sf_font_size + 2 * $sf_padding_v + 2 * $sf_border_width;
