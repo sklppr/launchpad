@@ -1,13 +1,14 @@
 /*** Units ***/
-$body_width: 500px;
+$body_width: 650px;
 $space_l: 40px;
 $space_m: 25px;
 $space_s: 10px;
 $link_width: 112px;
 $link_height: 40px;
-$number_of_searches: 4;
+$number_of_searches: 5;
 $number_of_bookmarks: 3;
 
+$sf_width: 450px;
 $sf_font_size: 24px;
 $sf_border_width: 1px;
 $sf_padding_v: 2px;
@@ -50,6 +51,10 @@ $white: hsl(0, 0%, 100%);
 	border-radius: $value;
 }
 
+@mixin imglink($filename) {
+	background: url(../images/#{$filename}.png) 0 0 no-repeat;
+}
+
 @import "compass/utilities/general/clearfix";
 
 /*** Styles ***/
@@ -85,20 +90,20 @@ h1 {
 
 #search-pages,
 #bookmarks {
-	width: $body_width;
 	height: $link_height;
 	@include clearfix;
 }
 
 #search-pages {
-	margin: 0 0 $space_s;
-	padding: 0 ($body_width - $link_width * $number_of_searches) / 2;
-	
+	width: $link_width * $number_of_searches + $space_s * ($number_of_searches - 1);
+	margin: 0 0 $space_s 15px; /* left margin to account for YouTube link being shifted to the left */
+	padding: 0 ($body_width - $link_width * $number_of_searches - $space_s * ($number_of_searches - 1)) / 2;
 }
 
 #bookmarks {
+	width: $link_width * $number_of_bookmarks + $space_s * ($number_of_bookmarks - 1);
 	margin: $space_l 0 0;
-	padding: 0 ($body_width - $link_width * $number_of_bookmarks) / 2;
+	padding: 0 ($body_width - $link_width * $number_of_bookmarks - $space_s * ($number_of_bookmarks - 1)) / 2;
 }
 
 .search-page,
@@ -107,11 +112,17 @@ h1 {
 	float: left;
 	width: 112px;
 	height: 40px;
+	margin-left: $space_s;
 	@include background-size($link_width, $link_height);
 	text-indent: -999em;
 	overflow: hidden;
 	opacity: 0.3;
 	@include transition(opacity 0.2s linear);
+}
+
+.search-pages-item:first-child .search-page,
+.bookmarks-item:first-child .bookmark {
+	margin-left: 0;
 }
 
 #search-pages .newline,
@@ -126,14 +137,15 @@ h1 {
 	opacity: 1.0;
 }
 
-#search-google { background-image: url(../images/google.png); }
-#search-wikipedia { background-image: url(../images/wikipedia.png); }
-#search-youtube { background-image: url(../images/youtube.png); }
-#search-twitter { background-image: url(../images/twitter.png); }
+#search-google { @include imglink(google); }
+#search-wikipedia { @include imglink(wikipedia); }
+#search-wolfram { @include imglink(wolfram); }
+#search-twitter { @include imglink(twitter); }
+#search-youtube { @include imglink(youtube); background-position: -20px 0; }
 
-#bookmark-facebook { background-image: url(../images/facebook.png); }
-#bookmark-github { background-image: url(../images/github.png); }
-#bookmark-instapaper { background-image: url(../images/instapaper.png); }
+#bookmark-facebook { @include imglink(facebook); }
+#bookmark-github { @include imglink(github); }
+#bookmark-instapaper { @include imglink(instapaper); }
 
 #search-box {
 	height: $sf_font_size + 2 * $sf_padding_v + 2 * $sf_border_width;
@@ -149,10 +161,10 @@ h1 {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 	font-size: $sf_font_size;
 	color: $dark_gray;
-	width: $body_width - 2*$sf_border_width - 2*$sf_padding_h;
+	width: $sf_width;
+	margin: 0 ($body_width - $sf_width - 2*$sf_border_width - 2*$sf_padding_h) / 2;
 	padding: $sf_padding_v $sf_padding_h;
 	border: 1px solid $light_gray;
-	
 	background: $white;
 	-webkit-background-clip: padding-box;
 	@include border-radius(3px);
