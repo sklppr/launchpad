@@ -10,9 +10,22 @@ var launchpad = {
 			this.url = $(selector).attr('data-search-url');
 		},
 		go: function() {
-			window.location = this.url.split('{query}').join(escape(this.field.attr('value')));
+			var text = this.field.attr('value');
+			// Check if text is a URL.
+			if (text.match(launchpad.isUrlPattern)) {
+				// Add http:// if missing.
+				if (!text.match(launchpad.hasProtocolPattern)) {
+					text = "http://" + text;
+				}
+				window.location = text;
+			}
+			else {
+				window.location = this.url.split('{query}').join(escape(text));
+			}
 		}
-	}
+	},
+	isUrlPattern: new RegExp("(?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?гхрсту])", 'i'),
+	hasProtocolPattern: new RegExp("^(?:https?://)", 'i')
 };
 
 // Initialization.
